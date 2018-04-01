@@ -1,0 +1,93 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    font-family: Century Gothic;
+    font-weight: 400;
+    font-size: 65px;
+    color: #000;
+    text-align: center;
+    margin-top: 100px;
+}
+
+h1 span {
+    color: #3eb5f1;
+}
+
+
+form {
+    width: 300px;
+    margin: auto;
+    margin-top: 50px;
+}
+
+.name_form {
+    width: 90px;
+    height: 20px;
+    border-radius: 7px;
+    border: solid 1px #a0a0a0;
+    margin-top: 6px;
+    margin-bottom: 30px;
+    padding: 10px;
+}
+
+.last_name_form {
+    width: 162px;
+    height: 20px;
+    border-radius: 7px;
+    border: solid 1px #a0a0a0;
+    margin-top: 6px;
+    margin-bottom: 30px;
+    padding: 10px;
+}
+
+.email_form, .password_form, .again_password_form {
+    width: 280px;
+    height: 20px;
+    border-radius: 7px;
+    border: solid 1px #a0a0a0;
+    margin-top: 6px;
+    margin-bottom: 30px;
+    padding: 10px;
+}
+
+label {
+    font-family: Arial;
+    font-size: 20px;
+    color: #000;
+    display: block;
+}
+
+.signIn {
+    width: 300px;
+    height: 40px;
+    border: 1px solid #3eb5f1; 
+    border-radius: 20px;
+    background-color: #3eb5f1;
+    color: #fff;
+    font-family: Arial;
+    font-size: 20px;
+    margin-top: 15px;
+    margin-bottom: 12px;
+    cursor: pointer;
+}
+
+.signUp {
+    width: 300px;
+    height: 40px;
+    border: 1px solid #3eb5f1; 
+    border-radius: 20px;
+    background-color: #fff;
+    color: #3eb5f1;
+    font-family: Arial;
+    font-size: 20px;
+    margin-top: 12px;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+label span {
+    color: red;
+}
