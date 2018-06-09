@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="account_setting_general_style.css">
+    <title>Налаштування | .globus</title>
+</head>
+<body>
+    <header>
+        <div class="center">
+            <a class="title" href="/account?<%=id%>">.glo<span>bus</span></a>
+        </div>
+        
+    </header>
+
+    <section class="all_profile">
+        <div class="center">
+            <div class="menu">
+                <div class="line1"></div>
+                <a href="account?<%=id%>"> <input type="submit" value="Моя сторінка" class="first_submit"> </a>
+                <a href="my_friends"> <input type="submit" value="Друзі" class="submit_menu"> </a>
+                <a href="dialogues"> <input type="submit" value="Повідомлення" class="submit_menu"> </a>
+                <a href="all_friends"> <input type="submit" value="Всі користувачі" class="submit_menu"> </a>
+                <a href="account_settings_general"> <input type="submit" value="Налаштування" class="submit_menu"> </a>
+                <a href="login"> <input type="submit" value="Вихід" class="submit_menu"> </a>
+                <div class="line2"></div>
+            </div>
+
+            <div class="information">
+                <div class="header">
+                    <a href="account_settings_general"> <input class="active" type="submit" value="Загальні"> </a>
+                    <a href="account_settings_mail"> <input class="non_active" type="submit" value="Зміна ел.пошти"> </a>
+                    <a href="account_settings_photo"> <input class="non_active" type="submit" value="Зміна фотографії"> </a>
+                </div>
+                <div class="line3"></div>
+
+                <h2>Загальні налаштування</h2>
+                <div class="line"></div>
+                
+                <form method="POST" action="account_settings_general" class="post_settings">
+                    <h1 class="text1">Дата народження:</h1>
+                    <input type="text" value="<%=birth_day%>" class="settings1" name="setting_birth_day">
+                    <input type="submit" value="змінити" class="enter1" name="enter_birth_day">
+                </form>
+
+                <div class="line"></div>
+
+                <form method="POST" action="account_settings_general" class="post_settings">
+                    <h1 class="text2">Місто:</h1>
+                    <input type="text" value="<%=city%>" class="settings2" name="setting_city">
+                    <input type="submit" value="змінити" class="enter2" name="enter_city">
+                </form>
+                
+                <div class="line"></div>
+
+                <form method="POST" action="account_settings_general" class="post_settings">
+                    <h1 class="text3">Сімейний стан:</h1>
+                    <input type="text" value="<%=status%>" class="settings3" name="setting_status">
+                    <input type="submit" value="змінити" class="enter3" name="enter_status">
+                </form>
+                
+                <div class="line"></div>
+
+                <form method="POST" action="account_settings_general" class="post_settings">
+                    <h1 class="text4">Ім`я:</h1>
+                    <input type="text" value="<%=firstName%>" class="settings4" name="setting_firstName">
+                    <input type="submit" value="змінити" class="enter4" name="enter_firstName">
+                </form>
+                
+                <div class="line"></div>
+
+                <form method="POST" action="account_settings_general" class="post_settings">
+                    <h1 class="text5">Прізвище:</h1>
+                    <input type="text" value="<%=lastName%>" class="settings5" name="setting_lastName">
+                    <input type="submit" value="змінити" class="enter5" name="enter_lastName">
+                </form>
+
+                <div class="line"></div>
+                <h2>Зміна паролю</h2>
+                <div class="line"></div>
+
+                <form method="POST" action="account_settings_general" class="post_settings2">
+                    <h1 class="text8">Старий пароль:</h1>
+                    <input type="text" class="settings8" name="setting_oldPassword">
+                    <p class="warningUsers"><%=warningUsers%></p>
+                    <h1 class="text9">Новий пароль:</h1>
+                    <input type="text" class="settings9" name="setting_newPassword">
+                    <input type="submit" value="змінити" class="enter9" name="enter_newPassword">
+                </form>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

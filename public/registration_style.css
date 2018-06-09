@@ -6,14 +6,33 @@
 h1 {
     font-family: Century Gothic;
     font-weight: 400;
-    font-size: 65px;
+    font-size: 62px;
     color: #000;
     text-align: center;
-    margin-top: 100px;
+    margin-top: 120px;
 }
 
 h1 span {
     color: #3eb5f1;
+}
+
+
+.logo {
+    width: 311px;
+    height: 100px;
+    background-color: #fff;
+    margin: auto;
+    position: relative;
+    z-index: 2;
+}
+
+.reg_name {
+    width: 435px;
+    height: 100px;  
+    margin: auto;
+    position: relative;
+    z-index: 1;
+    margin-top: -147px;  
 }
 
 
@@ -90,4 +109,21 @@ label {
 
 label span {
     color: red;
+}
+
+a{
+    display: block;
+    text-align: center;
+    margin-top: -10px;
+}
+
+
+
+
+
+.warningUsers, .warningUsers_password, .warningUsers_email, .warningUsers_error {
+    color: red;
+    font-family: Arial, Helvetica, sans-serif;
+    position: relative;
+    bottom: 21px;
 }

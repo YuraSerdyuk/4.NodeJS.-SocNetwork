@@ -66,6 +66,14 @@ label {
     cursor: pointer;
 }
 
+h2 {
+    font-size: 19px;
+    font-family: Century Gothic;
+    font-weight: 400;
+    margin-top: 80px;
+    text-align: center;
+}
+
 
 
 

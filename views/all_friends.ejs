@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="all_friends_style.css">
+    <title>Всі користувачі | .globus</title>
+</head>
+<body>
+    <header>
+        <div class="center">
+            <a class="title" href="/account?<%=id%>">.glo<span>bus</span></a>
+        </div>
+        
+    </header>
+
+    <section class="all_profile">
+        <div class="center">
+            <div class="menu">
+                <div class="line1"></div>
+                <a href="account?<%=id%>"> <input type="submit" value="Моя сторінка" class="first_submit"> </a>
+                <a href="my_friends"> <input type="submit" value="Друзі" class="submit_menu"> </a>
+                <a href="dialogues"> <input type="submit" value="Повідомлення" class="submit_menu"> </a>
+                <a href="all_friends"> <input type="submit" value="Всі користувачі" class="submit_menu"> </a>
+                <a href="account_settings_general"> <input type="submit" value="Налаштування" class="submit_menu"> </a>
+                <a href="login"> <input type="submit" value="Вихід" class="submit_menu"> </a>
+                <div class="line2"></div>
+            </div>
+
+            <div class="information">
+                <h2>Список користувачів</h2>
+                <div class="line"></div>
+
+                <% for (var i = 0; i < rows_in_users.length; i++) { %> <!-- перебирає всіх користувачів з БД -->
+ 
+                    <% if (rows_in_users[i].id !== id) { %>  <!-- перевіряє чи це не профіль зайшовшого користувача, бо його виводити не потрібно -->
+                    
+                        <% var resultat = false; %>
+
+                        <% for (var k = 0; k < rows_in_friends.length; k++) { %> <!-- шукає чи ДРУГ чи НЕ ДРУГ -->
+                            
+                            <% if (rows_in_friends[k].id_friend == rows_in_users[i].id) { %>
+                                <% var resultat = true; %>
+                                <section class="user">
+                                    <div class="line_top"></div>
+                                    <a href="account?<%=rows_in_users[i].id%>"><img class="photo_user" src="<%=rows_in_users[i].path_to_photo%>" alt="photo"></a>
+                                    <a href="account?<%=rows_in_users[i].id%>"><h3><%=rows_in_users[i].firstName%>  <%=rows_in_users[i].lastName%></h3></a>
+                                    <a class="send_mesage" href="message">Написати повідомлення</a>
+                                    <form method="POST" action="all_friends">
+                                        <input type="submit" class="add_ready" value="              В друзях              <%=rows_in_users[i].id%>" name="add">
+                                    </form>
+                                    <div class="line_bottom"></div>
+                                </section>
+                                <% break %>
+                            <% } %>
+                            
+                        <% } %>
+                        <% if (resultat == false) { %>
+                            <section class="user">
+                                <div class="line_top"></div>
+                                <a href="account?<%=rows_in_users[i].id%>"><img class="photo_user" src="<%=rows_in_users[i].path_to_photo%>" alt="photo"></a>
+                                <a href="account?<%=rows_in_users[i].id%>"><h3><%=rows_in_users[i].firstName%>  <%=rows_in_users[i].lastName%></h3></a>
+                                <a class="send_mesage" href="#">Написати повідомлення</a>
+                                <form method="POST" action="all_friends">
+                                    <input type="submit" class="add" value="     Долучити до друзів     <%=rows_in_users[i].id%>" name="add">
+                                </form>
+                                <div class="line_bottom"></div>
+                            </section>
+                        <% } %>
+
+                    <% } %>
+
+                <% } %>
+            <div class="line3"></div>         
+            </div>
+        </div>
+    </section>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="dialogues_style.css">
+    <title>Діалоги | .globus</title>
+</head>
+<body>
+    <header>
+        <div class="center">
+            <a class="title" href="/account">.glo<span>bus</span></a>
+        </div>
+        
+    </header>
+
+    <section class="all_profile">
+        <div class="center">
+            <div class="menu">
+                <div class="line1"></div>
+                <a href="account?<%=owner%>"> <input type="submit" value="Моя сторінка" class="first_submit"> </a>
+                <a href="my_friends"> <input type="submit" value="Друзі" class="submit_menu"> </a>
+                <a href="dialogues"> <input type="submit" value="Повідомлення" class="submit_menu"> </a>
+                <a href="all_friends"> <input type="submit" value="Всі користувачі" class="submit_menu"> </a>
+                <a href="account_settings_general"> <input type="submit" value="Налаштування" class="submit_menu"> </a>
+                <a href="login"> <input type="submit" value="Вихід" class="submit_menu"> </a>
+                <div class="line2"></div>
+            </div>
+
+            <div class="information">
+                <h2>Список діалогів</h2>
+                <a href="new_dialogues"> <input type="submit" value="Створити діалог" class="new_dialogues"> </a>
+                <div class="line0"></div>
+
+                <div class="all_message">
+                    <% if (rows_dialogue == 0) { %>
+                        <h1 class="red_text">От халепа, пусто.</h1>
+                        <img class="problem" src="img/problem.png">
+                        <h1 class="text">У вас пустий список діалогів.</h1>
+                        <h1 class="text">Почніть діалог з другом у вкладці <a href="new_dialogues">"Створити діалог".</a></h1>
+                        <img class="arrow" src="img/arrow.png">
+                    <% } else { %>
+
+                        <% for (var i = 0; i < rows_dialogue.length; i++) { %>
+
+                            <% if (rows_dialogue[i].owner == owner ) { %>
+
+                                <% for (var j = 0; j < rows_users.length; j++) { %>
+
+                                    <% if (rows_users[j].id == rows_dialogue[i].interlocutor ) { %>
+
+                                        <a class="all" href="message?<%=rows_dialogue[i].interlocutor%>"><div class="message">
+                                            <img class="interlocutor_photo" src="<%= rows_users[j].path_to_photo %>" alt="ava">
+                                            <h1> <%= rows_users[j].firstName %> <%= rows_users[j].lastName %> </h1>
+                                            <img class="owner_photo" src="<%= path_to_photo_owner %>" alt="">
+                                            <p><%= rows_dialogue[i].message %></p>
+                                            <h3><%= rows_dialogue[i].time_last_message %></h3>
+                                            <div class="line"></div>
+                                        </div> </a>
+
+                                    <% } %>
+
+                                <% } %>
+
+                            <% } else if (rows_dialogue[i].interlocutor == owner) { %>
+
+                                <% for (var k = 0; k < rows_users.length; k++) { %>
+
+                                    <% if (rows_dialogue[i].owner == rows_users[k].id ) { %>
+                                        <a class="all" href="message?<%=rows_dialogue[i].owner%>"><div class="message">
+                                            <img class="interlocutor_photo" src="<%= rows_users[k].path_to_photo %>" alt="ava">
+                                            <h1> <%= rows_users[k].firstName %> <%= rows_users[k].lastName %> </h1>
+                                            <p><%= rows_dialogue[i].message %></p>
+                                            <h3><%= rows_dialogue[i].time_last_message %></h3>
+                                            <div class="line"></div>
+                                        </div> </a>
+                                    <% } %>
+                                
+                                <% } %>
+                                
+                            <% } %>
+
+                        <% } %>
+
+                    <% } %>
+                </div>
+                <div class="line3"></div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

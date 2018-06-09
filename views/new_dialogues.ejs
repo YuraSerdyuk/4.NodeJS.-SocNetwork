@@ -1,0 +1,67 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="new_dialogues_style.css">
+    <title>Створити новий діалог | .globus</title>
+</head>
+<body>
+    <header>
+        <div class="center">
+            <a class="title" href="/account">.glo<span>bus</span></a>
+        </div>
+        
+    </header>
+
+    <section class="all_profile">
+        <div class="center">
+            <div class="menu">
+                <div class="line1"></div>
+                <a href="account?<%=owner%>"> <input type="submit" value="Моя сторінка" class="first_submit"> </a>
+                <a href="my_friends"> <input type="submit" value="Друзі" class="submit_menu"> </a>
+                <a href="dialogues"> <input type="submit" value="Повідомлення" class="submit_menu"> </a>
+                <a href="all_friends"> <input type="submit" value="Всі користувачі" class="submit_menu"> </a>
+                <a href="account_settings_general"> <input type="submit" value="Налаштування" class="submit_menu"> </a>
+                <a href="login"> <input type="submit" value="Вихід" class="submit_menu"> </a>
+                <div class="line2"></div>
+            </div>
+
+            <div class="information">
+                <h2>Створити діалог</h2>
+                <div class="line0"></div>
+
+                <div class="all_message">
+
+                    
+                    <% if (rows_friend == 0) { %>
+                        <h1 class="text_red">ОПАНЬКИ..</h1>
+                        <h1 class="text">Щоб розпочати діалог, потрібно мати хоча б одного друга.</h1>
+                        <h1 class="text">Перейшовши у вкладку <a href="all_friends">"Всі користувачі"</a> ви знайдете друзів з якими можете розпочати діалог.</h1>
+                    <% } else { %>
+
+                        <% for (var i = 0; i < rows_friend.length; i++) { %>
+                            
+                            <% for (var k = 0; k < rows_users.length; k++) { %>
+                                
+                                <% if (rows_users[k].id == rows_friend[i].id_friend) { %>
+                                    <div class="dialogue">
+                                        <a href="account?<%= rows_users[k].id %>" class="none_line"> <img class="photo" src="<%= rows_users[k].path_to_photo %>"> </a>
+                                        <a href="account?<%= rows_users[k].id %>" class="none_line"> <h1 class="name"> <%= rows_users[k].firstName %> <%= rows_users[k].lastName %> </h1> </a>
+                                        <a href="message?<%= rows_users[k].id %>"> <input type="submit" value="  Написати повідомлення   <%= rows_users[k].id %>" class="enter_dialogue"> </a>
+                                    </div>
+                                <% } %>
+
+                            <% } %>
+
+                        <% } %>
+
+                    <% } %>
+                    
+
+                </div>
+                <div class="line3"></div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

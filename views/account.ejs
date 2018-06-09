@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="account_style.css">
+    <title><%=firstName%> <%=lastName%> | .globus</title>
+</head>
+<body>
+    <header>
+        <div class="center">
+            <a class="title" href="/account?<%=owner%>">.glo<span>bus</span></a>
+        </div>
+        
+    </header>
+
+    <section class="all_profile">
+        <div class="center">
+            <div class="menu">
+                <div class="line1"></div>
+                <a href="account?<%=owner%>"> <input type="submit" value="Моя сторінка" class="first_submit"> </a>
+                <a href="my_friends"> <input type="submit" value="Друзі" class="submit_menu"> </a>
+                <a href="dialogues"> <input type="submit" value="Повідомлення" class="submit_menu"> </a>
+                <a href="all_friends"> <input type="submit" value="Всі користувачі" class="submit_menu"> </a>
+                <a href="account_settings_general"> <input type="submit" value="Налаштування" class="submit_menu"> </a>
+                <a href="login"> <input type="submit" value="Вихід" class="submit_menu" name="exit"> </a>
+                <div class="line2"></div>
+            </div>
+
+            <div class="photo">
+                <div class="hiden_photo">
+                    <img src="<%=path_to_photo%>" alt="photo">
+                </div>
+                <form method="POST" action="account">
+                    <% if (number_id2 == number_id) { %>
+                        <input type="submit" value="Редагувати" class="editer" name="setting">
+                    <% } else if (number_id2 != number_id) { %>
+                        <% if (rows_in_friends2 == 0) { %>
+                            <input type="submit" value="Написати повідомлення" class="send_message" name="send_message">
+                            <input type="submit" value="         Додати до друзів         <%=id%>" class="add_to_friend" name="add_to_friend">
+                        <% } else { %>
+                            <input type="submit" value="Написати повідомлення" class="send_message" name="send_message">
+                            <input type="submit" value="       Видалити до друзів       <%=id%>" class="del_to_friend" name="del_to_friend">
+                        <% } %>
+                    <% } %>
+                </form>
+            </div>
+
+            <div class="information">
+                <div class="line3"></div>
+                <div class="our_information">
+                    <h1><%=firstName%> <%=lastName%></h1>
+                    <div class="line"></div>
+                    <h2>Дата народження: <b><%=birth_day%></b> </h2>
+                    <h2>Місто: <b><%=city%></b> </h2>
+                    <h2>Сімейний стан: <b><%=status%></b></h2>
+                    <h2>Кількість друзів: <b><%=length_friend%></b></h2>
+                </div>
+                <div class="line4"></div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

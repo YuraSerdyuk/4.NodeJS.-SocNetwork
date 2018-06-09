@@ -2,28 +2,31 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Example</title>
+		<title>Реєстрація | .globus</title>
 		<link rel="stylesheet" type="text/css" href="registration_style.css">
 	</head>
 
 	<body>
 		<section>
-			<!--<h1><big><span>.glo</span>bal</big> | РЕЄСТ<span>РАЦІЯ</span></h1>-->
+			<h1><span>.glo</span>bal | РЕЄСТ<span>РАЦІЯ</span></h1>
 	
 			<form method="post" action="registration">
 				<label>Ваше ім`я:<span>*</span></label>
-				<input type="text" class="name_form" name="firstName">
-				<input type="text" class="last_name_form" name="lastName">
+				<input type="text" placeholder="Ім'я" class="name_form" name="firstName">
+				<input type="text" placeholder="Прізвище" class="last_name_form" name="lastName">
+				<p class="warningUsers"><%=warningUsers%></p>
 				<label>Email:<span>*</span></label>
-				<input type="text" class="email_form" name="emailRegist">
+				<input type="email" placeholder="example@gmail.com" class="email_form" name="emailRegist">
+				<p class="warningUsers_email"><%=warningUsers_email%></p>
 				<label>Пароль:<span>*</span></label>
-				<input type="password" class="password_form" name="passwordRegist">
+				<input type="password" placeholder="Не менше 4 символів" class="password_form" name="passwordRegist">
+				<p class="warningUsers_password"><%=warningUsers_password%></p>
 				<label>Повторіть пароль:<span>*</span></label>
-				<input type="password" class="again_password_form" name="againPasswordRegistr">
+				<input type="password" placeholder="Не менше 4 символів" class="again_password_form" name="againPasswordRegistr">
+				<p class="warningUsers_error"><%=warningUsers_error%></p>
 				<input type="submit" value="Зареєструватися" class="signUp" name="signUp">
-				<input type="submit" value="Вже є профіль? Увійти" class="signIn" name="signIn">
 			</form>
-	
+		<a href="login"><input type="submit" value="Вже є профіль? Увійти" class="signIn" name="signIn"></a>
 		</section>
 	</body>
 </html>

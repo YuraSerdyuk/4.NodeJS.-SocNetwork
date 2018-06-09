@@ -1,0 +1,242 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+header {
+    width: 100%;
+    height: 50px;
+    background-color: #3eb5f1;
+    position: relative;
+    z-index: 2;
+}
+
+.title {
+    text-decoration: none;
+    padding-left: 85px;
+    font-family: Century Gothic;
+    font-size: 24px;
+    font-weight: 400;
+    color: white;
+    top: 9px;
+    position: relative;
+}
+
+a span { 
+    color: black;
+}
+
+.title {
+    width: 72%;
+    margin: auto;
+    padding-top: 9px;
+}
+
+.all_profile {
+    width: 72%;
+    margin: auto;
+}
+
+.center {
+    width: 1002px;
+    margin: auto;
+}
+
+.menu {
+    float: left;
+    width: 200px;
+    height: 270px;
+    /* border: 1px solid #d5effc; */
+    border-bottom-style: none;
+}
+
+.submit_menu {
+    width: 198px;
+    height: 40px;
+    background-color: white;
+    cursor: pointer;
+    font-size: 15px;
+    color: #3eb5f1;
+    font-family: Century Gothic;
+    font-weight: 400;
+    border-bottom-color: rgb(62, 181, 241);
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    border-left-style: none;
+    border-right-style: none;
+    border-top-style: none;
+}
+
+.first_submit {
+    width: 198px;
+    height: 40px;
+    background-color: white;
+    cursor: pointer;
+    font-size: 15px;
+    color: #3eb5f1;
+    font-family: Century Gothic;
+    font-weight: 400;
+    margin-top: 17.5px;
+    border-top-color: rgb(62, 181, 241);
+    border-top-style: solid;
+    border-top-width: 2px;
+    border-bottom-color: rgb(62, 181, 241);
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    border-left-style: none;
+    border-right-style: none;
+}
+
+
+
+
+.information {
+    width: 798px;
+    /* height: 1000px; */
+    float: left;
+    /* border: 1px solid #d5effc; */
+    /* border-bottom-style: none; */
+}
+
+.line {
+    width: 800px;
+    height: 1px;
+    /* background-color: #3eb5f1; */
+    margin-left: -75px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    background: linear-gradient(to left, white, #3eb5f1, #3eb5f1, #3eb5f1, white);
+}
+
+.line1 {
+    position: fixed;
+    margin-top: -50px;
+    margin-left: 0px;
+    background-color: #3eb5f1;
+    width: 1px;
+    height: 900px;
+}
+
+.line2 {
+    position: fixed;
+    margin-top: -400px;
+    margin-left: 198px;
+    background-color: #3eb5f1;
+    width: 1px;
+    height: 900px;
+}
+
+.line3 {
+    position: fixed;
+    margin-top: -200px;
+    margin-left: 798px;
+    background-color: #3eb5f1;
+    width: 1px;
+    height: 1000px;
+}
+
+.block {
+    width: 650px;
+    margin: auto;
+}
+
+.text-button_message {
+    width: 100%;
+    height: 100px;
+    /* border: 1px solid black; */
+}
+
+.text0 {
+    width: 400px;
+    height: 70px;
+    margin-top: 15px;
+    margin-left: 125px;
+    border-color: #3eb5f1;
+    border-style: solid;
+    padding: 5px;
+}
+
+.submit {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    cursor: pointer;
+    border-style: none;
+    margin-top: 30px;
+    margin-left: 30px;
+}
+
+.owner_title {
+    width: 70px;
+    height: 70px;
+    background-size: 70px;
+    position: absolute;
+    border-style: none;
+    border-radius: 50px;
+    margin-top: 15px;
+    margin-left: 25px;
+}
+
+
+
+
+
+
+.photo {
+    width: 35px;
+    height: 35px;
+    border-radius: 35px;
+    float: left;
+}
+
+.name {
+    /* height: 40px; */
+    font-size: 17px;
+    font-family: Century Gothic;
+    font-weight: 400;
+    color: black;
+    float: left;
+    margin-top: 7px;
+    margin-left: 5px;
+}
+
+.text {
+    width: 500px;
+    font-family: Century Gothic;
+    font-weight: 400;
+    color: black;
+    padding-top: 40px;
+    margin-left: 43px;
+    /* position: absolute; */
+}
+
+.date1 {
+    font-family: Century Gothic;
+    font-weight: 400;
+    color: #bbbbbb;
+    position: absolute;
+    margin-left: 620px;
+    margin-top: 20px;
+    font-size: 17px;
+}
+
+.date2 {
+    font-family: Century Gothic;
+    font-weight: 400;
+    color: #bbbbbb;
+    position: absolute;
+    margin-left: 550px;
+    margin-top: 20px;
+    font-size: 17px;
+}
+
+
+.none_line{
+    /* text-decoration: none; */
+}
+
+.message {
+    margin-bottom: 20px;
+    /* height: 80px; */
+    /* display: table-header-group; */
+}

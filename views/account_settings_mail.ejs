@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="account_setting_mail_style.css">
+    <title>Налаштування | .globus</title>
+</head>
+<body>
+    <header>
+        <div class="center">
+            <a class="title" href="/account?<%=id%>">.glo<span>bus</span></a>
+        </div>
+        
+    </header>
+
+    <section class="all_profile">
+        <div class="center">
+            <div class="menu">
+                <div class="line1"></div>
+                <a href="account?<%=id%>"> <input type="submit" value="Моя сторінка" class="first_submit"> </a>
+                <a href="my_friends"> <input type="submit" value="Друзі" class="submit_menu"> </a>
+                <a href="dialogues"> <input type="submit" value="Повідомлення" class="submit_menu"> </a>
+                <a href="all_friends"> <input type="submit" value="Всі користувачі" class="submit_menu"> </a>
+                <a href="account_settings_general"> <input type="submit" value="Налаштування" class="submit_menu"> </a>
+                <a href="login"> <input type="submit" value="Вихід" class="submit_menu"> </a>
+                <div class="line2"></div>
+            </div>
+
+            <div class="information">
+                <div class="header">
+                    <a href="account_settings_general"> <input class="non_active" type="submit" value="Загальні"> </a>
+                    <a href="account_settings_mail"> <input class="active" type="submit" value="Зміна ел.пошти"> </a>
+                    <a href="account_settings_photo"> <input class="non_active" type="submit" value="Зміна фотографії"> </a>
+                </div>
+                <div class="line3"></div>
+
+                <h2>Зміна електронної пошти</h2>
+                <div class="line"></div>
+
+                <h1 class="text4"><%=readyMail%></h1>
+                <h1 class="text5">Стара електронна пошта:</h1>
+                <form method="POST" action="account_settings_mail" class="post_settings">
+                    <h1 class="text6">Електронна пошта:</h1>
+                    <input type="text" class="settings7" name="setting_mail">
+                    <input type="submit" value="змінити" class="enter7" name="enter">
+                </form>
+
+                <div class="info">
+                    <p class="norm"><%=warningUsers%></p>
+                    <p class="red"><%=warningUsersRed%></p>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+</body>
+</html>

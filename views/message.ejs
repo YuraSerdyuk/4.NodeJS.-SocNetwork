@@ -1,0 +1,96 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="message_style.css">
+    <title>Повідомлення | .globus</title>
+</head>
+<body>
+    <header>
+        <div class="center">
+            <a class="title" href="/account?<%=owner_id%>">.glo<span>bus</span></a>
+        </div>
+        
+    </header>
+
+    <section class="all_profile">
+        <div class="center">
+            <div class="menu">
+                <div class="line1"></div>
+                <a href="account?<%=owner_id%>"> <input type="submit" value="Моя сторінка" class="first_submit"> </a>
+                <a href="my_friends"> <input type="submit" value="Друзі" class="submit_menu"> </a>
+                <a href="dialogues"> <input type="submit" value="Повідомлення" class="submit_menu"> </a>
+                <a href="all_friends"> <input type="submit" value="Всі користувачі" class="submit_menu"> </a>
+                <a href="account_settings_general"> <input type="submit" value="Налаштування" class="submit_menu"> </a>
+                <a href="login"> <input type="submit" value="Вихід" class="submit_menu"> </a>
+                <div class="line2"></div>
+            </div>
+
+            <div class="information">
+                <div class="block">
+                    <div class="text-button_message">
+                        <form action="message" method="POST">
+                            <a href="account?<%=owner_id%>"><img class="owner_title" src="<%= path_to_photo_owner %>"></a>
+                            <textarea class="text0" name="text"  cols="30" rows="10" placeholder="Напишіть повідомлення..."></textarea>
+                            <input name="send_button" class="submit" type="submit" style="background-image: url(/img/send_button.jpg);" value="           <%=interlocutor%>">
+                            <div class="line"></div>
+                        </form>
+
+                        <% for (var i = 0; i < rows_friend_owner.length; i++) { %>
+
+                            <% if (rows_friend_owner[i].owner == owner_id) { %> <!-- якщо написав я  -->
+
+                                <% for (var k = 0; k < rows_friend.length; k++) { %>
+
+                                    <% if (rows_friend[k].id == owner_id) { %>
+
+                                    <div class="message">
+                                        <a href="account?<%=owner_id%>"> <img class="photo" src="<%= rows_friend[k].path_to_photo %>"> </a>
+                                        <a href="account?<%=owner_id%>" class="none_line"> <h1 class="name"><%= rows_friend[k].firstName %></h1> </a>
+                                        <% if (Date2 == rows_friend_owner[i].time.split(",")[0]) { %>
+                                            <h2 class="date1"><%= rows_friend_owner[i].time.split(",")[1] %></h2>
+                                        <% } else { %>
+                                            <h2 class="date2"><%= rows_friend_owner[i].time %></h2>
+                                        <% } %>
+                                        <p class="text"><%= rows_friend_owner[i].message %></p>
+                                    </div>
+
+                                    <% } %>
+
+                                <% } %>
+                                
+                            <% } else { %> <!-- якщо написав він  -->
+
+                                <% for (var k = 0; k < rows_friend.length; k++) { %>
+
+                                    <% if (rows_friend[k].id == interlocutor) { %>
+
+                                    <div class="message">
+                                        <a href="account?<%=interlocutor%>"> <img class="photo" src="<%= rows_friend[k].path_to_photo %>"> </a>
+                                        <a href="account?<%=interlocutor%>" class="none_line"> <h1 class="name"><%= rows_friend[k].firstName %></h1> </a>
+                                        <% if (Date2 == rows_friend_owner[i].time.split(",")[0]) { %>
+                                            <h2 class="date1"><%= rows_friend_owner[i].time.split(",")[1] %></h2>
+                                        <% } else { %>
+                                            <h2 class="date2"><%= rows_friend_owner[i].time %></h2>
+                                        <% } %>
+                                        <p class="text"><%= rows_friend_owner[i].message %></p>
+                                    </div>
+
+                                    <% } %>
+
+                                <% } %>
+
+                            <% } %>
+
+                        <% } %>
+
+
+                    </div>
+                </div>
+                <div class="line3"></div>
+            </div>
+        </div>
+    </section>
+    
+</body>
+</html>

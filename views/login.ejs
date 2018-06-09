@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link type="text/css" rel="stylesheet"  href="login_style.css" >
+    <title>Ласкаво просимо | .globus</title>
+</head>
+<body>
+    <section>
+        <!-- <h1><span>.glo</span>bal</h1> -->
+
+        <form method="post" action="login">
+            <label>Email:</label>
+            <input type="text" class="email_form" name="email" value="admin">
+            <p class="warningUsers"><%=warningUsers%></p>
+            <label>Пароль:</label>
+            <input type="password" class="password_form" name="password" value="123">
+            <input type="submit" value="Вхід" class="logIn1" name="submitLogin"> 
+            <input type="submit" value="Зареєструватися" class="signUp1" name="submitRegist">
+        </form>
+
+        <h2>&#9400;Yura Serdyuk</h2>
+        
+    </section>
+    <script src="socket_io.js"></script>
+    <script>
+            var socket = io.connect('https://localhost:3000');
+           
+    </script>
+</body>
+</html>
