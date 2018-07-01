@@ -1,6 +1,6 @@
 var express = require('express');
-var http = require('http');
 var app = express();
+var http = require('http').Server(app);
 
 var mysql = require('mysql');
 var cookieParser = require('cookie-parser');
@@ -9,15 +9,7 @@ var session = require('express-session');
 var mailer = require('nodemailer');
 var multer = require('multer');
 
-var server = http.Server(app);
-var io = require('socket.io')(server);
 
-app.use(function (req, res, next) {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept-Type');
-    res.header('Access-Control-Allow-Credentials', 'true');
-    next();
-})
 
 var storage = multer.diskStorage({
     destination: function(req, file, cb) {
@@ -32,15 +24,15 @@ var upload = multer({storage: storage});
 
 //ЗВ`ЯЗУЄТЬСЯ З СТОРІНКОЮ page.js І ЕКСПОРТУЄ ВСІ ЗМІННІ З ЦІЄЇ СТОРІНКИ В page.js
 var config = {
-    app: app,
-    mysql: mysql,
-    cookieParser: cookieParser,
-    bodyParser: bodyParser,
-    session: session,
-    connection: connection,
-    mailer: mailer,
-    multer: multer,
-    upload: upload
+                app: app,
+              mysql: mysql,
+       cookieParser: cookieParser,
+         bodyParser: bodyParser,
+            session: session,
+         connection: connection,
+             mailer: mailer,
+             multer: multer,
+             upload: upload
 }
 var page = require('./page');
 
@@ -235,24 +227,18 @@ app.get('/login', function(req, res) {
 
     var owner_id = "8";
     var interlocutor = "6";
+
+
     res.render('login', {warningUsers: warningUsers});
 });
 
 
-io.on('connection', function(socket){
-    console.log('a user connected');
-    socket.on('disconnect', function(){
-      console.log('user disconnected');
-    });
-  });
-
 
 
 //СТВОРЕНИЙ ПОСТ 3000 ЗА ЯКИМ МОЖНА ПЕРЕГЛЯДАТИ СТОРІНКУ 
-app.listen(3000);
-
-
-
+http.listen(4000, function(){
+    console.log('listening on: 4000 port');
+});
 
 
 

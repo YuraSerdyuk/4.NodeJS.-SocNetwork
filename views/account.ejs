@@ -54,7 +54,9 @@
                     <h2>Дата народження: <b><%=birth_day%></b> </h2>
                     <h2>Місто: <b><%=city%></b> </h2>
                     <h2>Сімейний стан: <b><%=status%></b></h2>
-                    <h2>Кількість друзів: <b><%=length_friend%></b></h2>
+                    <% if (number_id2 == number_id) { %>
+                         <h2>Кількість друзів: <b><%=length_friend%></b></h2>
+                    <% } %>
                 </div>
                 <div class="line4"></div>
             </div>

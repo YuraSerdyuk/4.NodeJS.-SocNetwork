@@ -154,6 +154,9 @@ a span {
     border-color: #3eb5f1;
     border-style: solid;
     padding: 5px;
+    font-size: 14px;
+    font-family: Century Gothic;
+    font-weight: 400;
 }
 
 .submit {
@@ -210,6 +213,17 @@ a span {
     /* position: absolute; */
 }
 
+.text2 {
+    width: 500px;
+    font-family: Century Gothic;
+    font-weight: 400;
+    color: black;
+    padding-top: 40px;
+    margin-left: 43px;
+    /* position: absolute; */
+    margin-bottom: 20px;
+}
+
 .date1 {
     font-family: Century Gothic;
     font-weight: 400;
@@ -230,13 +244,19 @@ a span {
     font-size: 17px;
 }
 
-
-.none_line{
-    /* text-decoration: none; */
-}
-
 .message {
     margin-bottom: 20px;
-    /* height: 80px; */
-    /* display: table-header-group; */
+}
+
+.message2 {
+    margin-bottom: 20px;
+}
+
+.warning_message {
+    font-family: Century Gothic;
+    font-weight: 400;
+    font-size: 15px;
+    color: #3eb5f1;
+    margin-top: 12px;
+    text-align: center;
 }

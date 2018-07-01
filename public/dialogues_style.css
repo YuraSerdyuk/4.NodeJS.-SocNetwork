@@ -198,6 +198,9 @@ h2 {
     float: right;
     margin-top: -21px;
     margin-right: 12px;
+    font-family: Century Gothic;
+    font-weight: 400;
+    font-size: 15px;
 }
 
 .line {

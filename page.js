@@ -307,9 +307,10 @@ function init(config) {
             var id_user = rows[0].id_user;
             var id = id_user;
             connection.query("SELECT * FROM new_users WHERE id='" + id_user + "'", function(error, rows, fields) {
-                //console.log(rows);
+                var rows_users = rows;
+                //console.log(rows_users);
 
-                var mail = rows[0].login;
+                var mail = rows_users[0].login;
                 var nickName = mail.split("@", 1)[0];
                 var eMail = mail.split("@", 2)[1];
                 var half = nickName.length / 2;
@@ -321,65 +322,75 @@ function init(config) {
 
                 var warningUsers = "";
                 var warningUsersRed = "";
-                
 
-                if (rows[0].login == req.body.setting_mail) {
-                    var warningUsersRed = "Ви намагаєтесь змінити ту саму електронну пошту. Спробуйте ще раз!"
-                } else {
-                    var warningUsers = "На вашу нову електронну пошту прийшло повідомлення про зміну електронної пошти."
+                connection.query("SELECT * FROM new_users WHERE login='" + req.body.setting_mail + "'", function(error, rows, fields) {
+                    //console.log(rows);
+                    if (rows != 0 && rows[0].id != id) {
+                        console.log("Користувач з такою поштою вже є")
+                        var warningUsersRed = "Введена Вами електронна пошта вже зайнята іншим користувачем. Будь ласка спробуйте ще раз!"
+                        res.render('account_settings_mail', {readyMail: readyMail,
+                                                          warningUsers: warningUsers,
+                                                       warningUsersRed: warningUsersRed,
+                                                                    id: id});
+                    } else {
+                        if (rows_users[0].login == req.body.setting_mail) {
+                            console.log("та сама ел. адреса")
+                            var warningUsersRed = "Ви намагаєтесь змінити Вашу теперішню електронну пошту. Будь ласка спробуйте ще раз!"
+                            res.render('account_settings_mail', {readyMail: readyMail,
+                                                              warningUsers: warningUsers,
+                                                           warningUsersRed: warningUsersRed,
+                                                                        id: id});
+                        } else {
+                            
+                            connection.query("SELECT * FROM new_users WHERE id='" + id_user + "'", function(error, rows, fields) {
+                                var sql = "UPDATE new_users set login =?  WHERE id = ?";
+                                var query = connection.query(sql, [req.body.setting_mail, id_user], function(err, result) {
+                                    //console.log(result);
+                                    //console.log(err);
+                                });
+                            });
 
-                    // Use Smtp Protocol to send Email
-                    var smtpTransport = config.mailer.createTransport({
-                        service: 'gmail',
-                        port: 587,
-                        secure: false,
-                        auth: {
-                            user: "yurko7203@gmail.com",
-                            pass: "11111998"
-                        }
-                    });
-
-                    var mail = {
-                        from: '"Globus services" yurko7203@gmail.com',
-                        to: req.body.setting_mail,
-                        subject: 'Привязка email до сторінки',
-                        html: '<b>Ваш email був успішно прив`язаний</b> <br> <p> З повагою, Адміністатор Globus.</p>'
-                    }
-
-                    smtpTransport.sendMail(mail, (error, result) => {
-                        if(error){
-                            console.log(error);
-                        } else if (result) {
-                            //console.log(result);
-                            connection.query("SELECT * FROM new_users WHERE login='" + req.body.setting_mail + "'", function(error, rows, fields) {
-                                
-                                if (rows == 0) {
-                                    connection.query("SELECT * FROM new_users WHERE id='" + id_user + "'", function(error, rows, fields) {
-                                        var sql = "UPDATE new_users set login =?  WHERE id = ?";
-                                        var query = connection.query(sql, [req.body.setting_mail, id_user], function(err, result) {
-                                            //console.log(result);
-                                            //console.log(err);
-                                        });
-                                    });
-                                } else {
-                                    var warningUsersRed = "Користувач з такою електронною поштою вже зареєстрований. Будь ласка введіть інший email."
+                            // Use Smtp Protocol to send Email
+                            var smtpTransport = config.mailer.createTransport({
+                                service: 'gmail',
+                                port: 587,
+                                secure: false,
+                                auth: {
+                                    user: "yurko7203@gmail.com",
+                                    pass: "11111998"
                                 }
                             });
+                            
+                            var mail = {
+                                from: '"Globus services" yurko7203@gmail.com',
+                                to: req.body.setting_mail,
+                                subject: 'Привязка email до сторінки',
+                                html: '<b>Ваш email був успішно прив`язаний</b> <br> <p> З повагою, Адміністатор Globus.</p>'
+                            }
+
+                            smtpTransport.sendMail(mail, (error, result) => {
+                                if(error){
+                                    console.log(error);
+                                    var warningUsersRed = "Не визначено електронну пошту, будь ласка перевірьте правильність вводу данних: " + error;
+                                } else if (result) {
+                                    //console.log(result);
+                                    var warningUsers = "На вашу нову електронну пошту прийшло повідомлення про зміну електронної пошти."
+                                }
+                                res.render('account_settings_mail', {readyMail: readyMail,
+                                    warningUsers: warningUsers,
+                                    warningUsersRed: warningUsersRed,
+                                                                            id: id});
+                            });
+                        
                         }
-                        //smtpTransport.close();
-                    });
-                }
-                
-                res.render('account_settings_mail', {readyMail: readyMail,
-                                                  warningUsers: warningUsers,
-                                               warningUsersRed: warningUsersRed,
-                                                            id: id});
+                    }
+                });
             });
         });
     });
+    
 
-
-
+    
     config.app.get('/account_settings_photo', urlencodedParser, function(req, res) {
         var sess = req.cookies['connect.sid'];
         connection.query("SELECT * FROM session WHERE number_session='" + sess + "'", function(error, rows, fields) {
@@ -672,6 +683,9 @@ function init(config) {
                         //console.log(Month);
 
                         var Date2 = date.getFullYear() + '-' + Month + '-' + Date0
+
+                        
+                        
                         res.render('message', {path_to_photo_owner: path_to_photo_owner,
                                                  rows_friend_owner: rows_friend_owner,
                                                        rows_friend: rows_friend,
@@ -679,11 +693,21 @@ function init(config) {
                                                       interlocutor: interlocutor,
                                                               date: date,
                                                              Date2: Date2,
-                                                             Date0: Date0}); 
-                        connection.query("SELECT * FROM messages WHERE message='" + "312" + "'", function(error, rows, fields) {
+                                                             Date0: Date0});
+                        /* var last_number_msg = rows_friend_owner.length;
+                        var timerId = setInterval(function() {
                             
+                            connection.query("SELECT * FROM messages WHERE name='" + total_name + "' OR name='" + total_name2 + "' ORDER BY time DESC", function(error, rows, fields) {
+                                
+                                var rows_interval_new_messages = rows;
+                                var number_msg = rows_interval_new_messages.length;
+                                if (number_msg != last_number_msg) {
+                                    console.log("Добавилось ще одне повідомлення!");  
+                                }
+                                
+                            });
 
-                        });                                
+                        }, 2000); */
                     });
                 });
             });
@@ -787,13 +811,14 @@ function init(config) {
                             }
                         }); 
                     });
-
-                    res.redirect('/message?' + interlocutor,);
-                    
+                    res.redirect('/message?' + interlocutor,);    
                 });
             });
         });
     });
+    
+    
+
 }
 
 module.exports = init;

@@ -195,21 +195,6 @@ form a:first-child {
     z-index: 1;
 }
 
-.hiden_photo:after {
-    content: "";
-    width: 200px;
-    height: 200px;
-    display: block;
-    position: absolute;
-    margin-top: -200px;
-    background: none;
-    transition: 1s linear;
-}
-
-.hiden_photo:hover:after {
-    background: linear-gradient(to bottom, rgb(255, 255, 255, 0.1) 0%, rgba(0, 0, 0) 100%);
-    transition: 1s linear;
-}
 
 
 
