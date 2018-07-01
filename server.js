@@ -236,9 +236,10 @@ app.get('/login', function(req, res) {
 
 
 //СТВОРЕНИЙ ПОСТ 3000 ЗА ЯКИМ МОЖНА ПЕРЕГЛЯДАТИ СТОРІНКУ 
-http.listen(4000, function(){
-    console.log('listening on: 4000 port');
+http.listen(process.env.PORT || 5000, function(){
+    console.log('listening on: 5000 port');
 });
+
 
 
 
