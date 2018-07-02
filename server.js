@@ -152,7 +152,7 @@ app.post('/registration', urlencodedParser, function(req, res) {
     }
 });
 
-app.post('/login', urlencodedParser, function(req, res) {
+app.post('/', urlencodedParser, function(req, res) {
     if (req.body.submitLogin) { //заходить сюда при нажатті кнопки вхід
         var warningUsers = "";
 
@@ -218,7 +218,7 @@ app.post('/login', urlencodedParser, function(req, res) {
 });
 
 
-app.get('/login', function(req, res) {
+app.get('/', function(req, res) {
     req.session.destroy();
     res.clearCookie('connect.sid');
 
