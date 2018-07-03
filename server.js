@@ -130,7 +130,7 @@ app.post('/registration', urlencodedParser, function(req, res) {
                                                   warningUsers_email: warningUsers_email,
                                                   warningUsers_error: warningUsers_error});
                         } else if (result) {
-                            res.redirect('/login');
+                            res.redirect('/');
                         }
                     });   
                 
