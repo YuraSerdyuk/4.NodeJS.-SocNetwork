@@ -47,10 +47,10 @@ app.use(express.static(__dirname + '/public'));
 
 //СТВОРИВ З'ЄДНАННЯ З СЕРВЕРОМ MYSQL
 var connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'mydatabase'
+    host: 'us-cdbr-iron-east-04.cleardb.net',
+    user: 'b689fbf0c31669',
+    password: 'fc9f8305',
+    database: 'heroku_80c419353ee1e3e'
 });
 
 
